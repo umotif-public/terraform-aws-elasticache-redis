@@ -1,39 +1,11 @@
-# terraform-aws-elasticache-redis
+## Example deployment flow
 
-A Terraform module to create an AWS Redis ElastiCache cluster
-
-## Resources created
-
-
-## Terraform versions
-
-Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master` branch.
-
-## Usage
-
-```hcl
-module "redis" {
-  source = "umotif-public/"
-  version = "~> 1.0"
-
-
-  tags = {
-    Project = "Test"
-  }
-}
+```bash
+terraform init
+terraform validate
+terraform plan
+terraform apply --auto-approve
 ```
-
-## Assumptions
-
-Module is to be used with Terraform > 0.12.
-
-## Examples
-
-* [Elasicache Redis](https://github.com/umotif-public/terraform-aws-elasticache-redis/tree/master/examples/core)
-
-## Authors
-
-Module managed by [Marcin Cuber](https://github.com/marcincuber) [linkedin](https://www.linkedin.com/in/marcincuber/).
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
@@ -82,7 +54,3 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [linkedin](http
 | security\_group\_vpc\_id | The VPC ID of the Redis ElastiCache security group. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-## License
-
-See LICENSE for full details.
