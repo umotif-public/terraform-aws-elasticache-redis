@@ -23,16 +23,17 @@ terraform apply --auto-approve
 | auto\_minor\_version\_upgrade |  | string | `"true"` | no |
 | automatic\_failover\_enabled | Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. | string | `"true"` | no |
 | description | The description of the all resources. | string | `"Managed by Terraform"` | no |
-| engine\_version | The version number of the cache engine to be used for the cache clusters in this replication group. | string | `"5.0.0"` | no |
+| engine\_version | The version number of the cache engine to be used for the cache clusters in this replication group. | string | `"5.0.6"` | no |
 | family | The family of the ElastiCache parameter group. | string | `"redis5.0"` | no |
 | ingress\_cidr\_blocks | List of Ingress CIDR blocks. | list(string) | `[]` | no |
 | kms\_key\_id | The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if `at_rest_encryption_enabled = true` | string | `""` | no |
 | maintenance\_window | Specifies the weekly time range for when maintenance on the cache cluster is performed. | string | `""` | no |
+| notification\_topic\_arn | An Amazon Resource Name (ARN) of an SNS topic to send ElastiCache notifications to. Example: `arn:aws:sns:us-east-1:012345678999:my_sns_topic` | string | `""` | no |
 | parameter | A list of Redis parameters to apply. Note that parameters may differ from one Redis family to another | object | `[]` | no |
 | port | The port number on which each of the cache nodes will accept connections. | string | `"6379"` | no |
+| security\_group\_ids | List of Security Groups. | list(string) | `[]` | no |
 | snapshot\_retention\_limit | The number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. | string | `"30"` | no |
 | snapshot\_window | The daily time range (in UTC) during which ElastiCache will begin taking a daily snapshot of your cache cluster. | string | `""` | no |
-| source\_security\_group\_ids | List of Security Groups. | list(string) | `[]` | no |
 | tags | A mapping of tags to assign to all resources. | map(string) | `{}` | no |
 | transit\_encryption\_enabled | Whether to enable encryption in transit. | string | `"true"` | no |
 

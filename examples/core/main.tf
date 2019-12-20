@@ -30,7 +30,7 @@ module "vpc" {
 module "redis" {
   source = "../../"
 
-  name_prefix           = "core-example-redis"
+  name_prefix           = "core-example"
   number_cache_clusters = 2
   node_type             = "cache.t3.small"
 

@@ -29,14 +29,14 @@ variable "ingress_cidr_blocks" {
   default     = []
 }
 
-variable "source_security_group_ids" {
+variable "security_group_ids" {
   type        = list(string)
   description = "List of Security Groups."
   default     = []
 }
 
 variable "engine_version" {
-  default     = "5.0.0"
+  default     = "5.0.6"
   type        = string
   description = "The version number of the cache engine to be used for the cache clusters in this replication group."
 }
@@ -133,4 +133,8 @@ variable "parameter" {
   description = "A list of Redis parameters to apply. Note that parameters may differ from one Redis family to another"
 }
 
-
+variable "notification_topic_arn" {
+  type        = string
+  default     = ""
+  description = "An Amazon Resource Name (ARN) of an SNS topic to send ElastiCache notifications to. Example: `arn:aws:sns:us-east-1:012345678999:my_sns_topic`"
+}

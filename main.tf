@@ -3,9 +3,9 @@ resource "aws_elasticache_replication_group" "redis" {
 
   parameter_group_name = aws_elasticache_parameter_group.redis.name
   subnet_group_name    = aws_elasticache_subnet_group.redis.name
-  security_group_ids   = [aws_security_group.redis.id]
+  security_group_ids   = concat(var.security_group_ids, [aws_security_group.redis.id])
 
-  replication_group_id  = var.name_prefix
+  replication_group_id  = "${var.name_prefix}-redis"
   number_cache_clusters = var.number_cache_clusters
   node_type             = var.node_type
 
@@ -27,16 +27,18 @@ resource "aws_elasticache_replication_group" "redis" {
 
   replication_group_description = var.description
 
+  notification_topic_arn = var.notification_topic_arn
+
   tags = merge(
     {
-      "Name" = var.name_prefix
+      "Name" = "${var.name_prefix}-redis"
     },
     var.tags,
   )
 }
 
 resource "aws_elasticache_parameter_group" "redis" {
-  name        = var.name_prefix
+  name        = "${var.name_prefix}-redis-pg"
   family      = var.family
   description = var.description
 
@@ -50,7 +52,7 @@ resource "aws_elasticache_parameter_group" "redis" {
 }
 
 resource "aws_elasticache_subnet_group" "redis" {
-  name        = var.name_prefix
+  name        = "${var.name_prefix}-redis-sg"
   subnet_ids  = var.subnet_ids
   description = var.description
 }
@@ -61,10 +63,14 @@ resource "aws_security_group" "redis" {
 
   tags = merge(
     {
-      "Name" = "${var.name_prefix}"
+      "Name" = "${var.name_prefix}-redis"
     },
     var.tags
   )
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_security_group_rule" "redis_ingress_cidr_blocks" {
