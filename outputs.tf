@@ -58,3 +58,7 @@ output "security_group_egress" {
   description = "The egress rules of the Redis ElastiCache security group."
 }
 
+output "elasticache_auth_token" {
+  description = "The Redis Auth Token"
+  value       = aws_elasticache_replication_group.redis.auth_token
+}
