@@ -4,7 +4,7 @@ variable "name_prefix" {
 }
 
 variable "number_cache_clusters" {
-  type        = string
+  type        = number
   description = "The number of cache clusters (primary and replicas) this replication group will have."
 }
 
@@ -43,7 +43,7 @@ variable "engine_version" {
 
 variable "port" {
   default     = 6379
-  type        = string
+  type        = number
   description = "The port number on which each of the cache nodes will accept connections."
 }
 
@@ -60,8 +60,8 @@ variable "snapshot_window" {
 }
 
 variable "snapshot_retention_limit" {
-  default     = "30"
-  type        = string
+  default     = 30
+  type        = number
   description = "The number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them."
 }
 
@@ -72,25 +72,25 @@ variable "auto_minor_version_upgrade" {
 
 variable "automatic_failover_enabled" {
   default     = true
-  type        = string
+  type        = bool
   description = "Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails."
 }
 
 variable "at_rest_encryption_enabled" {
   default     = true
-  type        = string
+  type        = bool
   description = "Whether to enable encryption at rest."
 }
 
 variable "transit_encryption_enabled" {
   default     = true
-  type        = string
+  type        = bool
   description = "Whether to enable encryption in transit."
 }
 
 variable "apply_immediately" {
   default     = false
-  type        = string
+  type        = bool
   description = "Specifies whether any modifications are applied immediately, or during the next maintenance window."
 }
 
