@@ -13,7 +13,7 @@ Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master
 
 ```hcl
 module "redis" {
-  source = "umotif-public/"
+  source = "umotif-public/elasticache-redis/aws"
   version = "~> 1.0"
 
 
