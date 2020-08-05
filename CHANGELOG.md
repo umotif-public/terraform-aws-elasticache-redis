@@ -5,7 +5,8 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- update docs and add chglog
+- Update module versions to support v3 provider
+- Feature/updates ([#3](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/3))
 - add git hooks and update docs
 - Update README.md
 
