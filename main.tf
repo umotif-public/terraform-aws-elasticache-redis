@@ -58,7 +58,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 }
 
 resource "aws_security_group" "redis" {
-  name_prefix = "${var.name_prefix}-"
+  name_prefix = "${var.name_prefix}-redis-"
   vpc_id      = var.vpc_id
 
   tags = merge(
