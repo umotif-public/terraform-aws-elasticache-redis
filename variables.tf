@@ -29,6 +29,12 @@ variable "ingress_cidr_blocks" {
   default     = []
 }
 
+variable "ingress_self" {
+  type        = bool
+  description = "Specify whether the security group itself will be added as a source to the ingress rule."
+  default     = false
+}
+
 variable "security_group_ids" {
   type        = list(string)
   description = "List of Security Groups."

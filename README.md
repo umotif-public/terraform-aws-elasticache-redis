@@ -89,6 +89,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [linkedin](http
 | description | The description of the all resources. | `string` | `"Managed by Terraform"` | no |
 | engine\_version | The version number of the cache engine to be used for the cache clusters in this replication group. | `string` | `"5.0.6"` | no |
 | family | The family of the ElastiCache parameter group. | `string` | `"redis5.0"` | no |
+| ingress\_self | Specify whether the security group itself will be added as a source to the ingress rule. | `bool` | `false` | no |
 | ingress\_cidr\_blocks | List of Ingress CIDR blocks. | `list(string)` | `[]` | no |
 | kms\_key\_id | The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if `at_rest_encryption_enabled = true` | `string` | `""` | no |
 | maintenance\_window | Specifies the weekly time range for when maintenance on the cache cluster is performed. | `string` | `""` | no |
