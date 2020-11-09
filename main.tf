@@ -73,6 +73,17 @@ resource "aws_security_group" "redis" {
   }
 }
 
+resource "aws_security_group_rule" "redis_ingress_self" {
+  count = var.ingress_self ? 1 : 0
+
+  type              = "ingress"
+  from_port         = var.port
+  to_port           = var.port
+  protocol          = "tcp"
+  self              = true
+  security_group_id = aws_security_group.redis.id
+}
+
 resource "aws_security_group_rule" "redis_ingress_cidr_blocks" {
   count = length(var.ingress_cidr_blocks) != 0 ? 1 : 0
 
