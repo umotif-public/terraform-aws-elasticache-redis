@@ -7,7 +7,7 @@ provider "aws" {
 #####
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "2.21.0"
+  version = "2.63.0"
 
   name = "simple-vpc"
 
@@ -30,7 +30,7 @@ module "vpc" {
 module "redis" {
   source = "../../"
 
-  name_prefix           = "core-example"
+  name_prefix           = "redis-basic-example"
   number_cache_clusters = 2
   node_type             = "cache.t3.small"
 
