@@ -144,3 +144,21 @@ variable "notification_topic_arn" {
   default     = ""
   description = "An Amazon Resource Name (ARN) of an SNS topic to send ElastiCache notifications to. Example: `arn:aws:sns:us-east-1:012345678999:my_sns_topic`"
 }
+
+variable "cluster_mode_enabled" {
+  type        = bool
+  description = "Enable creation of a native redis cluster."
+  default     = false
+}
+
+variable "replicas_per_node_group" {
+  type        = number
+  default     = 0
+  description = "Required when `cluster_mode_enabled` is set to true. Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource."
+}
+
+variable "num_node_groups" {
+  type        = number
+  default     = 0
+  description = "Required when `cluster_mode_enabled` is set to true. Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications."
+}

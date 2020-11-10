@@ -6,7 +6,7 @@ resource "aws_elasticache_replication_group" "redis" {
   security_group_ids   = concat(var.security_group_ids, [aws_security_group.redis.id])
 
   replication_group_id  = "${var.name_prefix}-redis"
-  number_cache_clusters = var.number_cache_clusters
+  number_cache_clusters = var.cluster_mode_enabled ? null : var.number_cache_clusters
   node_type             = var.node_type
 
   engine_version = var.engine_version
@@ -29,6 +29,14 @@ resource "aws_elasticache_replication_group" "redis" {
 
   notification_topic_arn = var.notification_topic_arn
 
+  dynamic "cluster_mode" {
+    for_each = var.cluster_mode_enabled ? [1] : []
+    content {
+      replicas_per_node_group = var.replicas_per_node_group
+      num_node_groups         = var.num_node_groups
+    }
+  }
+
   tags = merge(
     {
       "Name" = "${var.name_prefix}-redis"
@@ -37,17 +45,29 @@ resource "aws_elasticache_replication_group" "redis" {
   )
 }
 
+resource "random_id" "redis_pg" {
+  keepers = {
+    family = var.family
+  }
+
+  byte_length = 2
+}
+
 resource "aws_elasticache_parameter_group" "redis" {
-  name        = "${var.name_prefix}-redis-pg"
+  name        = "${var.name_prefix}-redis-${random_id.redis_pg.hex}"
   family      = var.family
   description = var.description
 
   dynamic "parameter" {
-    for_each = var.parameter
+    for_each = var.cluster_mode_enabled ? concat([{ name = "cluster-enabled", value = "yes" }], var.parameter) : var.parameter
     content {
       name  = parameter.value.name
       value = parameter.value.value
     }
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 

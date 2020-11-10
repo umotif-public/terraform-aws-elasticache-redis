@@ -5,7 +5,30 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- Update module versions to support v3 provider
+
+
+<a name="1.2.0"></a>
+## [1.2.0] - 2020-11-09
+
+- Add self sg ingress rule option ([#7](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/7))
+
+
+<a name="1.1.1"></a>
+## [1.1.1] - 2020-11-09
+
+- Update module to remove 0.14 limit ([#6](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/6))
+
+
+<a name="1.1.0"></a>
+## [1.1.0] - 2020-08-20
+
+- Update main.tf
+
+
+<a name="1.0.3"></a>
+## [1.0.3] - 2020-08-05
+
+- Feature/v3 provider support ([#4](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/4))
 - Feature/updates ([#3](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/3))
 - add git hooks and update docs
 - Update README.md
@@ -30,6 +53,10 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.0.2...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.1.1...1.2.0
+[1.1.1]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.1.0...1.1.1
+[1.1.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.0.3...1.1.0
+[1.0.3]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.0.0...1.0.1
