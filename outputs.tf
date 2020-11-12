@@ -4,7 +4,7 @@ output "elasticache_replication_group_id" {
 }
 
 output "elasticache_replication_group_primary_endpoint_address" {
-  value       = aws_elasticache_replication_group.redis.primary_endpoint_address
+  value       = var.cluster_mode_enabled ? aws_elasticache_replication_group.redis.configuration_endpoint_address : aws_elasticache_replication_group.redis.primary_endpoint_address
   description = "The address of the endpoint for the primary node in the replication group."
 }
 
@@ -59,6 +59,11 @@ output "security_group_egress" {
 }
 
 output "elasticache_auth_token" {
-  description = "The Redis Auth Token"
+  description = "The Redis Auth Token."
   value       = aws_elasticache_replication_group.redis.auth_token
+}
+
+output "elasticache_port" {
+  description = "The Redis port."
+  value       = aws_elasticache_replication_group.redis.port
 }
