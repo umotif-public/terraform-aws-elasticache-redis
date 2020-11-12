@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="1.3.0"></a>
+## [1.3.0] - 2020-11-10
+
+- Add support for clustered mode and upgrade fixes ([#8](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/8))
+
+
 <a name="1.2.0"></a>
 ## [1.2.0] - 2020-11-09
 
@@ -53,7 +59,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.3.0...HEAD
+[1.3.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.0.3...1.1.0

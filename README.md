@@ -11,7 +11,7 @@ Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master
 ```hcl
 module "redis" {
   source = "umotif-public/elasticache-redis/aws"
-  version = "~> 1.0.0"
+  version = "~> 1.3.0"
 
   name_prefix           = "core-example"
   number_cache_clusters = 2
@@ -117,8 +117,9 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [linkedin](http
 
 | Name | Description |
 |------|-------------|
-| elasticache\_auth\_token | The Redis Auth Token |
+| elasticache\_auth\_token | The Redis Auth Token. |
 | elasticache\_parameter\_group\_id | The ElastiCache parameter group name. |
+| elasticache\_port | The Redis port. |
 | elasticache\_replication\_group\_id | The ID of the ElastiCache Replication Group. |
 | elasticache\_replication\_group\_member\_clusters | The identifiers of all the nodes that are part of this replication group. |
 | elasticache\_replication\_group\_primary\_endpoint\_address | The address of the endpoint for the primary node in the replication group. |
