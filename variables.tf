@@ -162,3 +162,9 @@ variable "num_node_groups" {
   default     = 0
   description = "Required when `cluster_mode_enabled` is set to true. Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications."
 }
+
+variable "availability_zones" {
+  type        = list(string)
+  description = "A list of EC2 availability zones in which the replication group's cache clusters will be created. The order of the availability zones in the list is not important."
+  default     = null
+}
