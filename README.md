@@ -89,6 +89,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [linkedin](http
 | auth\_token | The password used to access a password protected server. Can be specified only if `transit_encryption_enabled = true`. | `string` | `""` | no |
 | auto\_minor\_version\_upgrade | n/a | `string` | `true` | no |
 | automatic\_failover\_enabled | Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. | `bool` | `true` | no |
+| availability\_zones | A list of EC2 availability zones in which the replication group's cache clusters will be created. The order of the availability zones in the list is not important. | `list(string)` | `null` | no |
 | cluster\_mode\_enabled | Enable creation of a native redis cluster. | `bool` | `false` | no |
 | description | The description of the all resources. | `string` | `"Managed by Terraform"` | no |
 | engine\_version | The version number of the cache engine to be used for the cache clusters in this replication group. | `string` | `"5.0.6"` | no |
