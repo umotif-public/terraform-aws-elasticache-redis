@@ -1,3 +1,5 @@
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/umotif-public/terraform-aws-elasticache-redis?style=social)
+
 # terraform-aws-elasticache-redis
 
 A Terraform module to create an AWS Redis ElastiCache cluster
