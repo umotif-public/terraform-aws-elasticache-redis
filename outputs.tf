@@ -1,3 +1,8 @@
+output "elasticache_replication_group_arn" {
+  value       = aws_elasticache_replication_group.redis.arn
+  description = "The Amazon Resource Name (ARN) of the created ElastiCache Replication Group."
+}
+
 output "elasticache_replication_group_id" {
   value       = aws_elasticache_replication_group.redis.id
   description = "The ID of the ElastiCache Replication Group."
@@ -6,6 +11,11 @@ output "elasticache_replication_group_id" {
 output "elasticache_replication_group_primary_endpoint_address" {
   value       = var.cluster_mode_enabled ? aws_elasticache_replication_group.redis.configuration_endpoint_address : aws_elasticache_replication_group.redis.primary_endpoint_address
   description = "The address of the endpoint for the primary node in the replication group."
+}
+
+output "elasticache_replication_group_reader_endpoint_address" {
+  value       = var.cluster_mode_enabled ? aws_elasticache_replication_group.redis.configuration_endpoint_address : aws_elasticache_replication_group.redis.reader_endpoint_address
+  description = "The address of the endpoint for the reader node in the replication group."
 }
 
 output "elasticache_replication_group_member_clusters" {
