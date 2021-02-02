@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- Update README.md
+
+
+<a name="1.4.0"></a>
+## [1.4.0] - 2020-12-08
+
+- Add support for availability_zones parameter ([#11](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/11))
+
+
+<a name="1.3.1"></a>
+## [1.3.1] - 2020-11-12
+
+- Update outputs + docs ([#9](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/9))
 
 
 <a name="1.3.0"></a>
@@ -59,7 +72,9 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.3.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.4.0...HEAD
+[1.4.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.3.1...1.4.0
+[1.3.1]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.1.0...1.1.1

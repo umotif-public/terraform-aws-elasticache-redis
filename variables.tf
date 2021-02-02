@@ -168,3 +168,15 @@ variable "availability_zones" {
   description = "A list of EC2 availability zones in which the replication group's cache clusters will be created. The order of the availability zones in the list is not important."
   default     = null
 }
+
+variable "multi_az_enabled" {
+  type        = string
+  description = "Specifies whether to enable Multi-AZ Support for the replication group. If true, `automatic_failover_enabled` must also be enabled. Defaults to false."
+  default     = null
+}
+
+variable "final_snapshot_identifier" {
+  type        = string
+  description = "The name of your final node group (shard) snapshot. ElastiCache creates the snapshot from the primary node in the cluster. If omitted, no final snapshot will be made."
+  default     = null
+}
