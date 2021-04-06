@@ -180,3 +180,9 @@ variable "final_snapshot_identifier" {
   description = "The name of your final node group (shard) snapshot. ElastiCache creates the snapshot from the primary node in the cluster. If omitted, no final snapshot will be made."
   default     = null
 }
+
+variable "prevent_destroy" {
+  type        = bool
+  description = "Prevents the destruction of the Redis cluster when true"
+  default     = false
+}

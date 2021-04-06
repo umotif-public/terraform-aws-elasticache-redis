@@ -32,6 +32,10 @@ resource "aws_elasticache_replication_group" "redis" {
 
   notification_topic_arn = var.notification_topic_arn
 
+  lifecycle {
+    prevent_destroy = var.prevent_destroy
+  }
+
   dynamic "cluster_mode" {
     for_each = var.cluster_mode_enabled ? [1] : []
     content {
@@ -126,4 +130,3 @@ resource "aws_security_group_rule" "redis_egress" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.redis.id
 }
-

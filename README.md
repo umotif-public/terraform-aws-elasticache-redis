@@ -109,6 +109,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [linkedin](http
 | number\_cache\_clusters | The number of cache clusters (primary and replicas) this replication group will have. | `number` | n/a | yes |
 | parameter | A list of Redis parameters to apply. Note that parameters may differ from one Redis family to another | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `[]` | no |
 | port | The port number on which each of the cache nodes will accept connections. | `number` | `6379` | no |
+| prevent_destroy | Controls the lifecycle policy which can prevent the redis cluster from being destroyed on subsequent applies | `boolean` | `false` | no |
 | replicas\_per\_node\_group | Required when `cluster_mode_enabled` is set to true. Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource. | `number` | `0` | no |
 | security\_group\_ids | List of Security Groups. | `list(string)` | `[]` | no |
 | snapshot\_retention\_limit | The number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. | `number` | `30` | no |
