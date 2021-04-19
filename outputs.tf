@@ -71,6 +71,7 @@ output "security_group_egress" {
 output "elasticache_auth_token" {
   description = "The Redis Auth Token."
   value       = aws_elasticache_replication_group.redis.auth_token
+  sensitive   = true
 }
 
 output "elasticache_port" {
