@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-<a name="unreleased"></a>
-## [Unreleased]
+<a name="2.0.0"></a>
+## [2.0.0] - 2021-04-19
 
-- Update README.md
+- Add support for Terraform 0.15 by setting sensitive outputs to have the sensitive = true flag. (https://www.terraform.io/upgrade-guides/0-15.html#sensitive-output-values)
+- Terraform version requirement bumped to 0.14.5 in order to support sensitive values
 
 
 <a name="1.4.0"></a>
@@ -72,7 +73,7 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.4.0...HEAD
+[2.0.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.4.0...2.0.0
 [1.4.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.3.1...1.4.0
 [1.3.1]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.2.0...1.3.0
