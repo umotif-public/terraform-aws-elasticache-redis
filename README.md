@@ -6,8 +6,8 @@ A Terraform module to create an AWS Redis ElastiCache cluster
 
 ## Terraform versions
 
-Terraform 0.14.5. Pin module version to `~> v2.0`.
-Terraform 0.12 - 0.14.4. Pin module version to `~> v1.0`.
+Terraform 0.14.5 and higher, pin module version to `~> v2.0`.
+For Terraform 0.12 to 0.14.4, pin module version to `~> v1.0`.
 Submit pull-requests to `master` branch.
 
 ## Usage
@@ -15,13 +15,13 @@ Submit pull-requests to `master` branch.
 ```hcl
 module "redis" {
   source = "umotif-public/elasticache-redis/aws"
-  version = "~> 1.5.0"
+  version = "~> 2.1.0"
 
   name_prefix           = "core-example"
   number_cache_clusters = 2
   node_type             = "cache.t3.small"
 
-  engine_version           = "5.0.6"
+  engine_version           = "6.x"
   port                     = 6379
   maintenance_window       = "mon:03:00-mon:04:00"
   snapshot_window          = "04:00-06:00"
@@ -34,7 +34,7 @@ module "redis" {
   auth_token                 = "1234567890asdfghjkl"
 
   apply_immediately = true
-  family            = "redis5.0"
+  family            = "redis6.x"
   description       = "Test elasticache redis."
 
   subnet_ids = module.vpc.private_subnets
@@ -55,11 +55,6 @@ module "redis" {
 }
 ```
 
-## Assumptions
-
-Module v1.0 is to be used with Terraform > 0.12
-Module v2.0+ is to be used with Terraform > 0.14.5
-
 ## Examples
 
 * [Redis Basic](https://github.com/umotif-public/terraform-aws-elasticache-redis/tree/master/examples/redis-basic)
@@ -75,14 +70,14 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [linkedin](http
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.26 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.43 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.26 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.43 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.1.0 |
 
 ## Modules
