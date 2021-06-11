@@ -72,12 +72,16 @@ resource "aws_elasticache_parameter_group" "redis" {
   lifecycle {
     create_before_destroy = true
   }
+
+  tags = var.tags
 }
 
 resource "aws_elasticache_subnet_group" "redis" {
   name        = "${var.name_prefix}-redis-sg"
   subnet_ids  = var.subnet_ids
   description = var.description
+
+  tags = var.tags
 }
 
 resource "aws_security_group" "redis" {
