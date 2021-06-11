@@ -8,7 +8,7 @@ A Terraform module to create an AWS Redis ElastiCache cluster
 
 Terraform 0.14.5 and higher, pin module version to `~> v2.0`.
 For Terraform 0.12 to 0.14.4, pin module version to `~> v1.0`.
-Submit pull-requests to `master` branch.
+Submit pull-requests to `main` branch.
 
 ## Usage
 
