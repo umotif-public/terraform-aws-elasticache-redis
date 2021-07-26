@@ -180,3 +180,9 @@ variable "final_snapshot_identifier" {
   description = "The name of your final node group (shard) snapshot. ElastiCache creates the snapshot from the primary node in the cluster. If omitted, no final snapshot will be made."
   default     = null
 }
+
+variable "global_replication_group_id" {
+  description = "The ID of the global replication group to which this replication group should belong."
+  type        = string
+  default     = null
+}

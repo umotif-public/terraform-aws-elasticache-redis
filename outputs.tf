@@ -24,7 +24,7 @@ output "elasticache_replication_group_member_clusters" {
 }
 
 output "elasticache_parameter_group_id" {
-  value       = aws_elasticache_parameter_group.redis.id
+  value       = var.global_replication_group_id == null ? aws_elasticache_parameter_group.redis[0].id : 0
   description = "The ElastiCache parameter group name."
 }
 
