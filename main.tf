@@ -1,7 +1,7 @@
 resource "aws_elasticache_replication_group" "redis" {
   engine = var.global_replication_group_id == null ? "redis" : null
 
-  parameter_group_name = var.global_replication_group_id == null ? aws_elasticache_parameter_group.redis[0].name : null
+  parameter_group_name = var.global_replication_group_id == null ? aws_elasticache_parameter_group.redis.name : null
   subnet_group_name    = aws_elasticache_subnet_group.redis.name
   security_group_ids   = concat(var.security_group_ids, [aws_security_group.redis.id])
 
@@ -58,8 +58,6 @@ resource "random_id" "redis_pg" {
 }
 
 resource "aws_elasticache_parameter_group" "redis" {
-  count = var.global_replication_group_id == null ? 1 : 0
-
   name        = "${var.name_prefix}-redis-${random_id.redis_pg.hex}"
   family      = var.family
   description = var.description
