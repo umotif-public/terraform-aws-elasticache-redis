@@ -37,7 +37,7 @@ data "aws_subnet_ids" "replica" {
 module "redis_main" {
   source = "../../"
 
-  name_prefix           = "redis-replication-group-example"
+  name_prefix           = "redis-replication-example"
   number_cache_clusters = 2
   node_type             = "cache.m5.large"
   auth_token            = "1234567890asdfghjkl"
