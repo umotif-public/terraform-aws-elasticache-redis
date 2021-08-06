@@ -17,7 +17,7 @@ resource "aws_elasticache_replication_group" "redis" {
   snapshot_window            = var.snapshot_window
   snapshot_retention_limit   = var.snapshot_retention_limit
   final_snapshot_identifier  = var.final_snapshot_identifier
-  automatic_failover_enabled = var.global_replication_group_id == null && var.automatic_failover_enabled && var.number_cache_clusters > 1 ? true : false
+  automatic_failover_enabled = var.automatic_failover_enabled && var.number_cache_clusters > 1 ? true : false
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   multi_az_enabled           = var.multi_az_enabled
 
@@ -131,4 +131,3 @@ resource "aws_security_group_rule" "redis_egress" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.redis.id
 }
-
