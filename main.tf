@@ -1,16 +1,16 @@
 resource "aws_elasticache_replication_group" "redis" {
-  engine = "redis"
+  engine = var.global_replication_group_id == null ? "redis" : null
 
-  parameter_group_name = aws_elasticache_parameter_group.redis.name
+  parameter_group_name = var.global_replication_group_id == null ? aws_elasticache_parameter_group.redis.name : null
   subnet_group_name    = aws_elasticache_subnet_group.redis.name
   security_group_ids   = concat(var.security_group_ids, [aws_security_group.redis.id])
 
   availability_zones    = var.availability_zones
-  replication_group_id  = "${var.name_prefix}-redis"
+  replication_group_id  = var.global_replication_group_id == null ? "${var.name_prefix}-redis" : "${var.name_prefix}-redis-replica"
   number_cache_clusters = var.cluster_mode_enabled ? null : var.number_cache_clusters
-  node_type             = var.node_type
+  node_type             = var.global_replication_group_id == null ? var.node_type : null
 
-  engine_version = var.engine_version
+  engine_version = var.global_replication_group_id == null ? var.engine_version : null
   port           = var.port
 
   maintenance_window         = var.maintenance_window
@@ -21,10 +21,11 @@ resource "aws_elasticache_replication_group" "redis" {
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   multi_az_enabled           = var.multi_az_enabled
 
-  at_rest_encryption_enabled = var.at_rest_encryption_enabled
-  transit_encryption_enabled = var.transit_encryption_enabled
-  auth_token                 = var.auth_token != "" ? var.auth_token : null
-  kms_key_id                 = var.kms_key_id
+  at_rest_encryption_enabled  = var.global_replication_group_id == null ? var.at_rest_encryption_enabled : null
+  transit_encryption_enabled  = var.global_replication_group_id == null ? var.transit_encryption_enabled : null
+  auth_token                  = var.auth_token != "" ? var.auth_token : null
+  kms_key_id                  = var.kms_key_id
+  global_replication_group_id = var.global_replication_group_id
 
   apply_immediately = var.apply_immediately
 
@@ -77,7 +78,7 @@ resource "aws_elasticache_parameter_group" "redis" {
 }
 
 resource "aws_elasticache_subnet_group" "redis" {
-  name        = "${var.name_prefix}-redis-sg"
+  name        = var.global_replication_group_id == null ? "${var.name_prefix}-redis-sg" : "${var.name_prefix}-redis-sg-replica"
   subnet_ids  = var.subnet_ids
   description = var.description
 
@@ -130,4 +131,3 @@ resource "aws_security_group_rule" "redis_egress" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.redis.id
 }
-
