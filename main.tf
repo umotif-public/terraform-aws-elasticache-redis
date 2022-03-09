@@ -5,10 +5,10 @@ resource "aws_elasticache_replication_group" "redis" {
   subnet_group_name    = aws_elasticache_subnet_group.redis.name
   security_group_ids   = concat(var.security_group_ids, [aws_security_group.redis.id])
 
-  availability_zones    = var.availability_zones
-  replication_group_id  = var.global_replication_group_id == null ? "${var.name_prefix}-redis" : "${var.name_prefix}-redis-replica"
-  number_cache_clusters = var.cluster_mode_enabled ? null : var.number_cache_clusters
-  node_type             = var.global_replication_group_id == null ? var.node_type : null
+  preferred_cache_cluster_azs = var.preferred_cache_cluster_azs
+  replication_group_id        = var.global_replication_group_id == null ? "${var.name_prefix}-redis" : "${var.name_prefix}-redis-replica"
+  num_cache_clusters          = var.cluster_mode_enabled ? null : var.num_cache_clusters
+  node_type                   = var.global_replication_group_id == null ? var.node_type : null
 
   engine_version = var.global_replication_group_id == null ? var.engine_version : null
   port           = var.port
@@ -17,7 +17,7 @@ resource "aws_elasticache_replication_group" "redis" {
   snapshot_window            = var.snapshot_window
   snapshot_retention_limit   = var.snapshot_retention_limit
   final_snapshot_identifier  = var.final_snapshot_identifier
-  automatic_failover_enabled = var.automatic_failover_enabled && var.number_cache_clusters > 1 ? true : false
+  automatic_failover_enabled = var.automatic_failover_enabled && var.num_cache_clusters >= 2 ? true : false
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   multi_az_enabled           = var.multi_az_enabled
 
@@ -29,17 +29,12 @@ resource "aws_elasticache_replication_group" "redis" {
 
   apply_immediately = var.apply_immediately
 
-  replication_group_description = var.description
+  description = var.description
 
   notification_topic_arn = var.notification_topic_arn
 
-  dynamic "cluster_mode" {
-    for_each = var.cluster_mode_enabled ? [1] : []
-    content {
-      replicas_per_node_group = var.replicas_per_node_group
-      num_node_groups         = var.num_node_groups
-    }
-  }
+  replicas_per_node_group = var.cluster_mode_enabled ? var.replicas_per_node_group : null
+  num_node_groups         = var.cluster_mode_enabled ? var.num_node_groups : null
 
   tags = merge(
     {
@@ -63,7 +58,7 @@ resource "aws_elasticache_parameter_group" "redis" {
   description = var.description
 
   dynamic "parameter" {
-    for_each = var.cluster_mode_enabled ? concat([{ name = "cluster-enabled", value = "yes" }], var.parameter) : var.parameter
+    for_each = var.num_node_groups > 0 ? concat([{ name = "cluster-enabled", value = "yes" }], var.parameter) : var.parameter
     content {
       name  = parameter.value.name
       value = parameter.value.value

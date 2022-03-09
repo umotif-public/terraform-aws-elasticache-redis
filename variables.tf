@@ -3,9 +3,16 @@ variable "name_prefix" {
   description = "The replication group identifier. This parameter is stored as a lowercase string."
 }
 
-variable "number_cache_clusters" {
+variable "num_cache_clusters" {
   type        = number
-  description = "The number of cache clusters (primary and replicas) this replication group will have."
+  default     = 1
+  description = "The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications. Conflicts with num_node_groups."
+}
+
+variable "cluster_mode_enabled" {
+  type        = bool
+  description = "Enable creation of a native redis cluster."
+  default     = false
 }
 
 variable "node_type" {
@@ -79,7 +86,7 @@ variable "auto_minor_version_upgrade" {
 variable "automatic_failover_enabled" {
   default     = true
   type        = bool
-  description = "Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails."
+  description = "Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. If enabled, number_cache_clusters must be greater than 1. Must be enabled for Redis (cluster mode enabled) replication groups."
 }
 
 variable "at_rest_encryption_enabled" {
@@ -145,25 +152,24 @@ variable "notification_topic_arn" {
   description = "An Amazon Resource Name (ARN) of an SNS topic to send ElastiCache notifications to. Example: `arn:aws:sns:us-east-1:012345678999:my_sns_topic`"
 }
 
-variable "cluster_mode_enabled" {
-  type        = bool
-  description = "Enable creation of a native redis cluster."
-  default     = false
-}
-
 variable "replicas_per_node_group" {
   type        = number
   default     = 0
-  description = "Required when `cluster_mode_enabled` is set to true. Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource."
+  description = "Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will trigger an online resizing operation before other settings modifications."
+
+  validation {
+    condition     = var.replicas_per_node_group <= 5
+    error_message = "The replicas_per_node_group value must be between 0 and 5."
+  }
 }
 
 variable "num_node_groups" {
   type        = number
   default     = 0
-  description = "Required when `cluster_mode_enabled` is set to true. Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications."
+  description = "Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications."
 }
 
-variable "availability_zones" {
+variable "preferred_cache_cluster_azs" {
   type        = list(string)
   description = "A list of EC2 availability zones in which the replication group's cache clusters will be created. The order of the availability zones in the list is not important."
   default     = null
@@ -172,7 +178,7 @@ variable "availability_zones" {
 variable "multi_az_enabled" {
   type        = string
   description = "Specifies whether to enable Multi-AZ Support for the replication group. If true, `automatic_failover_enabled` must also be enabled. Defaults to false."
-  default     = null
+  default     = false
 }
 
 variable "final_snapshot_identifier" {

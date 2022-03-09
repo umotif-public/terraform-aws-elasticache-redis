@@ -9,8 +9,11 @@ data "aws_vpc" "default" {
   default = true
 }
 
-data "aws_subnet_ids" "all" {
-  vpc_id = data.aws_vpc.default.id
+data "aws_subnets" "all" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
 }
 
 #####
@@ -19,9 +22,9 @@ data "aws_subnet_ids" "all" {
 module "redis" {
   source = "../../"
 
-  name_prefix           = "redis-clustered-example"
-  number_cache_clusters = 2
-  node_type             = "cache.t3.small"
+  name_prefix        = "redis-clustered-example"
+  num_cache_clusters = 2
+  node_type          = "cache.t3.small"
 
   cluster_mode_enabled    = true
   replicas_per_node_group = 1
@@ -43,7 +46,7 @@ module "redis" {
   family            = "redis6.x"
   description       = "Test elasticache redis."
 
-  subnet_ids = data.aws_subnet_ids.all.ids
+  subnet_ids = data.aws_subnets.all.ids
   vpc_id     = data.aws_vpc.default.id
 
   ingress_cidr_blocks = ["0.0.0.0/0"]

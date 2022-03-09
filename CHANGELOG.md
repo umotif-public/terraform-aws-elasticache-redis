@@ -7,6 +7,19 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="2.2.0"></a>
+## [2.2.0] - 2021-08-11
+
+- Add support for global_replication_group_id ([#19](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/19))
+
+
+<a name="2.1.0"></a>
+## [2.1.0] - 2021-06-11
+
+- Update docs and use main branch as default ([#18](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/18))
+- Add tags support to all resources ([#17](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/17))
+
+
 <a name="2.0.0"></a>
 ## [2.0.0] - 2021-04-19
 
@@ -84,7 +97,9 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.2.0...HEAD
+[2.2.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.1.0...2.2.0
+[2.1.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.5.0...2.0.0
 [1.5.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.3.1...1.4.0
