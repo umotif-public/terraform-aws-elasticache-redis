@@ -137,3 +137,13 @@ resource "aws_security_group_rule" "redis_egress" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.redis.id
 }
+
+resource "aws_security_group_rule" "security_group_ingress" {
+  count                    = length(var.allowed_security_groups)
+  type                     = "ingress"
+  from_port                = var.port
+  to_port                  = var.port
+  protocol                 = "tcp"
+  source_security_group_id = element(var.allowed_security_groups, count.index)
+  security_group_id        = aws_security_group.redis.id
+}
