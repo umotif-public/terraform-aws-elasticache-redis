@@ -138,7 +138,7 @@ resource "aws_security_group_rule" "redis_egress" {
   security_group_id = aws_security_group.redis.id
 }
 
-resource "aws_security_group_rule" "security_group_ingress" {
+resource "aws_security_group_rule" "other_sg_ingress" {
   count                    = length(var.allowed_security_groups)
   type                     = "ingress"
   from_port                = var.port
