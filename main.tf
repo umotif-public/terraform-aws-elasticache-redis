@@ -40,10 +40,10 @@ resource "aws_elasticache_replication_group" "redis" {
     for_each = var.log_delivery_configuration
 
     content {
-      destination_type = each.key
-      destination      = each.value.destination
-      log_format       = each.value.log_format
-      log_type         = each.value.log_type
+      destination_type = log_delivery_configuration.key
+      destination      = log_delivery_configuration.value.destination
+      log_format       = log_delivery_configuration.value.log_format
+      log_type         = log_delivery_configuration.value.log_type
     }
   }
 
