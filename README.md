@@ -16,7 +16,7 @@ A Terraform module to create an AWS Redis ElastiCache cluster
 ```hcl
 module "redis" {
   source = "umotif-public/elasticache-redis/aws"
-  version = "~> 2.1.0"
+  version = "~> v3.0"
 
   name_prefix           = "core-example"
   number_cache_clusters = 2
