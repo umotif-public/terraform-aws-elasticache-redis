@@ -36,6 +36,17 @@ resource "aws_elasticache_replication_group" "redis" {
   replicas_per_node_group = var.cluster_mode_enabled ? var.replicas_per_node_group : null
   num_node_groups         = var.cluster_mode_enabled ? var.num_node_groups : null
 
+  dynamic "log_delivery_configuration" {
+    for_each = var.log_delivery_configuration
+
+    content {
+      destination_type = log_delivery_configuration.value.destination_type
+      destination      = log_delivery_configuration.value.destination
+      log_format       = log_delivery_configuration.value.log_format
+      log_type         = log_delivery_configuration.value.log_type
+    }
+  }
+
   tags = merge(
     {
       "Name" = "${var.name_prefix}-redis"

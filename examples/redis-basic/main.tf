@@ -58,6 +58,15 @@ module "redis" {
     }
   ]
 
+  log_delivery_configuration = [
+    {
+      destination_type = "cloudwatch-logs"
+      destination      = "aws_cloudwatch_log_group.henrique.name"
+      log_format       = "json"
+      log_type         = "engine-log"
+    }
+  ]
+
   tags = {
     Project = "Test"
   }

@@ -192,3 +192,19 @@ variable "global_replication_group_id" {
   type        = string
   default     = null
 }
+
+variable "log_delivery_configuration" {
+  type = list(object({
+    destination_type = string
+    destination      = string
+    log_format       = string
+    log_type         = string
+  }))
+  description = "Log Delivery configuration for the cluster."
+  default     = []
+
+  validation {
+    condition     = length(var.log_delivery_configuration) <= 2
+    error_message = "You can set 2 targets at most for log delivery options."
+  }
+}
