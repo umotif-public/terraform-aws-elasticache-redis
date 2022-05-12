@@ -9,12 +9,12 @@ output "elasticache_replication_group_id" {
 }
 
 output "elasticache_replication_group_primary_endpoint_address" {
-  value       = var.num_node_groups > 1 ? aws_elasticache_replication_group.redis.configuration_endpoint_address : aws_elasticache_replication_group.redis.primary_endpoint_address
+  value       = var.num_node_groups > 0 ? aws_elasticache_replication_group.redis.configuration_endpoint_address : aws_elasticache_replication_group.redis.primary_endpoint_address
   description = "The address of the endpoint for the primary node in the replication group."
 }
 
 output "elasticache_replication_group_reader_endpoint_address" {
-  value       = var.num_node_groups > 1 ? aws_elasticache_replication_group.redis.configuration_endpoint_address : aws_elasticache_replication_group.redis.reader_endpoint_address
+  value       = var.num_node_groups > 0 ? aws_elasticache_replication_group.redis.configuration_endpoint_address : aws_elasticache_replication_group.redis.reader_endpoint_address
   description = "The address of the endpoint for the reader node in the replication group."
 }
 

@@ -28,7 +28,7 @@ module "redis" {
 
   cluster_mode_enabled    = true
   replicas_per_node_group = 1
-  num_node_groups         = 1
+  num_node_groups         = 2
 
   engine_version           = "6.x"
   port                     = 6379
