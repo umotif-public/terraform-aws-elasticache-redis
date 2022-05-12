@@ -18,6 +18,14 @@ data "aws_subnets" "all" {
     values = [data.aws_vpc.default.id]
   }
 }
+
+#####
+# External Security Group
+#####
+resource "aws_security_group" "other_sg" {
+  vpc_id = data.aws_vpc.default.id
+}
+
 #####
 # Elasticache Redis
 #####
@@ -48,6 +56,8 @@ module "redis" {
 
   subnet_ids = data.aws_subnets.all.ids
   vpc_id     = data.aws_vpc.default.id
+
+  allowed_security_groups = [aws_security_group.other_sg.id]
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
 

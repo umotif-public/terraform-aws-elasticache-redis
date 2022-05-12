@@ -208,3 +208,9 @@ variable "log_delivery_configuration" {
     error_message = "You can set 2 targets at most for log delivery options."
   }
 }
+
+variable "allowed_security_groups" {
+  type        = list(string)
+  description = "List of existing security groups that will be allowed ingress via the elaticache security group rules"
+  default     = []
+}

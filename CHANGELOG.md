@@ -5,10 +5,9 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- Updated Readme
-- More changes
-- Fix dynamic
-- Initial commit
+- Update README and basic example
+- Allow to configure for ingress from other SGs
+- Support Redis log delivery ([#26](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/26))
 
 
 <a name="3.0.0"></a>
