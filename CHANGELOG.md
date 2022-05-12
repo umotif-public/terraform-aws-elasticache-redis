@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- Updated Readme
+- More changes
+- Fix dynamic
+- Initial commit
+
+
+<a name="3.0.0"></a>
+## [3.0.0] - 2022-03-09
+
+- Upgrade module to be compatible with AWS Provider 4.0.0 ([#21](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/21))
 
 
 <a name="2.2.0"></a>
@@ -97,7 +107,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.2.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.2.0...3.0.0
 [2.2.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/1.5.0...2.0.0
