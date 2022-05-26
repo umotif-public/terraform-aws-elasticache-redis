@@ -19,7 +19,7 @@ module "redis" {
   version = "~> 3.0.0"
 
   name_prefix           = "core-example"
-  num_cache_cluster     = 2
+  num_cache_clusters    = 2
   node_type             = "cache.t3.small"
 
   engine_version           = "6.x"
