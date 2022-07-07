@@ -31,6 +31,8 @@ resource "aws_elasticache_replication_group" "redis" {
 
   description = var.description
 
+  data_tiering_enabled = var.data_tiering_enabled
+
   notification_topic_arn = var.notification_topic_arn
 
   replicas_per_node_group = var.cluster_mode_enabled ? var.replicas_per_node_group : null

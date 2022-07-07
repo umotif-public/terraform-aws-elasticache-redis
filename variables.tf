@@ -214,3 +214,9 @@ variable "allowed_security_groups" {
   description = "List of existing security groups that will be allowed ingress via the elaticache security group rules"
   default     = []
 }
+
+variable "data_tiering_enabled" {
+  type        = bool
+  default     = false
+  description = "Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes."
+}
