@@ -24,7 +24,7 @@ module "redis" {
 
   name_prefix        = "redis-clustered-example"
   num_cache_clusters = 2
-  node_type          = "cache.t3.small"
+  node_type          = "cache.t4g.small"
 
   cluster_mode_enabled    = true
   replicas_per_node_group = 1
