@@ -34,7 +34,7 @@ module "redis" {
 
   name_prefix        = "redis-basic-example"
   num_cache_clusters = 2
-  node_type          = "cache.t3.small"
+  node_type          = "cache.t4g.small"
 
   engine_version            = "6.x"
   port                      = 6379

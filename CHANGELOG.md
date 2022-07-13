@@ -5,15 +5,28 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- Update README and basic example
-- Allow to configure for ingress from other SGs
+- Use t4g instance sizes for examples + Update minimum redis version from 5.x to 6.x
+- Update terraform versions
+- Add Data Tiering support ([#32](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/32))
+
+
+<a name="3.1.2"></a>
+## [3.1.2] - 2022-05-26
+
+- fix example in README ([#30](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/30))
+
+
+<a name="3.1.1"></a>
+## [3.1.1] - 2022-05-12
+
+- Fix outputs for endpoints ([#29](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/29))
+
+
+<a name="3.1.0"></a>
+## [3.1.0] - 2022-05-12
+
+- Allow other sg ingress ([#24](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/24))
 - Support Redis log delivery ([#26](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/26))
-- Support Data Tiering Feature for r6gd nodes
-
-<a name="3.0.0"></a>
-## [3.0.0] - 2022-03-09
-
-- Upgrade module to be compatible with AWS Provider 4.0.0 ([#21](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/21))
 
 
 <a name="3.0.0"></a>
@@ -112,7 +125,10 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.2...HEAD
+[3.1.2]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.1...3.1.2
+[3.1.1]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.0...3.1.1
+[3.1.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.2.0...3.0.0
 [2.2.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/2.0.0...2.1.0
