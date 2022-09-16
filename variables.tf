@@ -152,6 +152,13 @@ variable "notification_topic_arn" {
   description = "An Amazon Resource Name (ARN) of an SNS topic to send ElastiCache notifications to. Example: `arn:aws:sns:us-east-1:012345678999:my_sns_topic`"
 }
 
+variable "redis_suffix_name_enabled" {
+  type        = bool
+  description = "Enable the redis suffix at the end of the replication group identifier"
+  default = true
+}
+
+
 variable "replicas_per_node_group" {
   type        = number
   default     = 0

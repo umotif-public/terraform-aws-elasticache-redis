@@ -1,3 +1,7 @@
+locals {
+  name_suffix = redis_suffix_name_enabled == true ? "-redis" : ""
+}
+
 resource "aws_elasticache_replication_group" "redis" {
   engine = var.global_replication_group_id == null ? "redis" : null
 
@@ -6,7 +10,7 @@ resource "aws_elasticache_replication_group" "redis" {
   security_group_ids   = concat(var.security_group_ids, [aws_security_group.redis.id])
 
   preferred_cache_cluster_azs = var.preferred_cache_cluster_azs
-  replication_group_id        = var.global_replication_group_id == null ? "${var.name_prefix}-redis" : "${var.name_prefix}-redis-replica"
+  replication_group_id        = var.global_replication_group_id == null ? "${var.name_prefix}${local.name_suffix}" : "${var.name_prefix}${local.name_suffix}-replica"
   num_cache_clusters          = var.cluster_mode_enabled ? null : var.num_cache_clusters
   node_type                   = var.global_replication_group_id == null ? var.node_type : null
 
@@ -51,7 +55,7 @@ resource "aws_elasticache_replication_group" "redis" {
 
   tags = merge(
     {
-      "Name" = "${var.name_prefix}-redis"
+      "Name" = "${var.name_prefix}${local.name_suffix}"
     },
     var.tags,
   )
