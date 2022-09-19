@@ -1,5 +1,5 @@
 locals {
-  name_suffix = redis_suffix_name_enabled == true ? "-redis" : ""
+  name_suffix = var.redis_suffix_name_enabled ? "-redis" : ""
 }
 
 resource "aws_elasticache_replication_group" "redis" {

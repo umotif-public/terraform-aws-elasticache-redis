@@ -155,7 +155,7 @@ variable "notification_topic_arn" {
 variable "redis_suffix_name_enabled" {
   type        = bool
   description = "Enable the redis suffix at the end of the replication group identifier"
-  default = true
+  default     = true
 }
 
 
