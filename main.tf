@@ -38,6 +38,7 @@ resource "aws_elasticache_replication_group" "redis" {
   replicas_per_node_group = var.cluster_mode_enabled ? var.replicas_per_node_group : null
   num_node_groups         = var.cluster_mode_enabled ? var.num_node_groups : null
 
+  user_group_ids = var.user_group_ids
   dynamic "log_delivery_configuration" {
     for_each = var.log_delivery_configuration
 
