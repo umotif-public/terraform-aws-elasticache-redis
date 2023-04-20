@@ -36,6 +36,12 @@ variable "ingress_cidr_blocks" {
   default     = []
 }
 
+variable "egress_cidr_blocks" {
+  type        = list(string)
+  description = "List of Egress CIDR blocks."
+  default     = ["0.0.0.0/0"]
+}
+
 variable "ingress_self" {
   type        = bool
   description = "Specify whether the security group itself will be added as a source to the ingress rule."
