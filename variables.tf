@@ -182,7 +182,7 @@ variable "preferred_cache_cluster_azs" {
 }
 
 variable "multi_az_enabled" {
-  type        = string
+  type        = bool
   description = "Specifies whether to enable Multi-AZ Support for the replication group. If true, `automatic_failover_enabled` must also be enabled. Defaults to false."
   default     = false
 }
@@ -225,4 +225,9 @@ variable "data_tiering_enabled" {
   type        = bool
   default     = false
   description = "Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes."
+}
+variable "user_group_ids" {
+  type        = list(string)
+  default     = null
+  description = "User Group ID to associate with the replication group"
 }
