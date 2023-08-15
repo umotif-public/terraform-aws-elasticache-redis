@@ -79,6 +79,12 @@ variable "maintenance_window" {
   description = "Specifies the weekly time range for when maintenance on the cache cluster is performed."
 }
 
+variable "snapshot_name" {
+  type        = string
+  description = "The name of a snapshot from which to restore data into the new node group. Changing the snapshot_name forces a new resource."
+  default     = null
+}
+
 variable "snapshot_window" {
   default     = ""
   type        = string
