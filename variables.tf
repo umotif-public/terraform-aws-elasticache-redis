@@ -239,8 +239,15 @@ variable "data_tiering_enabled" {
   default     = false
   description = "Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to true when using r6gd nodes."
 }
+
 variable "user_group_ids" {
   type        = list(string)
   default     = null
   description = "User Group ID to associate with the replication group"
+}
+
+variable "parameter_group_description" {
+  type        = string
+  description = "The description of the ElastiCache parameter group"
+  default     = null
 }

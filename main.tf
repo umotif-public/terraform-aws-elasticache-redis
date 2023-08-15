@@ -75,7 +75,7 @@ resource "random_id" "redis_pg" {
 resource "aws_elasticache_parameter_group" "redis" {
   name        = "${var.name_prefix}-redis-${random_id.redis_pg.hex}"
   family      = var.family
-  description = var.description
+  description = var.parameter_group_description != null ? var.parameter_group_description : "Elasticache parameter group managed by Terraform"
 
   dynamic "parameter" {
     for_each = var.num_node_groups > 0 ? concat([{ name = "cluster-enabled", value = "yes" }], var.parameter) : var.parameter
@@ -85,18 +85,22 @@ resource "aws_elasticache_parameter_group" "redis" {
     }
   }
 
+  # Ignore changes to the description since it will try to recreate the resource
   lifecycle {
-    create_before_destroy = true
+    ignore_changes = [
+      description,
+    ]
   }
 
   tags = var.tags
 }
 
 resource "aws_elasticache_subnet_group" "redis" {
-  count       = var.subnet_group_name == null && length(var.subnet_ids) > 0 ? 1 : 0
+  count = var.subnet_group_name == null && length(var.subnet_ids) > 0 ? 1 : 0
+
   name        = var.global_replication_group_id == null ? "${var.name_prefix}-redis-sg" : "${var.name_prefix}-redis-sg-replica"
   subnet_ids  = var.subnet_ids
-  description = var.description
+  description = "Elasticache subnet group for ${var.description}"
 
   tags = var.tags
 }
