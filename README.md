@@ -22,7 +22,7 @@ module "redis" {
   num_cache_clusters    = 2
   node_type             = "cache.t4g.small"
 
-  engine_version           = "6.x"
+  engine_version           = "7.0"
   port                     = 6379
   maintenance_window       = "mon:03:00-mon:04:00"
   snapshot_window          = "04:00-06:00"
@@ -35,7 +35,7 @@ module "redis" {
   auth_token                 = "1234567890asdfghjkl"
 
   apply_immediately = true
-  family            = "redis6.x"
+  family            = "redis7"
   description       = "Test elasticache redis."
 
   subnet_ids = module.vpc.private_subnets
@@ -81,14 +81,14 @@ Module managed by [uMotif](https://github.com/umotif-public/)
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.11 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.8.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.12.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.3.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.8.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.12.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.3.2 |
 
 ## Modules
