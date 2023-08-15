@@ -1,8 +1,12 @@
+locals {
+  subnet_group_name = var.subnet_group_name != null ? var.subnet_group_name : aws_elasticache_subnet_group.redis[0].name
+}
+
 resource "aws_elasticache_replication_group" "redis" {
   engine = var.global_replication_group_id == null ? "redis" : null
 
   parameter_group_name = var.global_replication_group_id == null ? aws_elasticache_parameter_group.redis.name : null
-  subnet_group_name    = aws_elasticache_subnet_group.redis.name
+  subnet_group_name    = local.subnet_group_name
   security_group_ids   = concat(var.security_group_ids, [aws_security_group.redis.id])
 
   preferred_cache_cluster_azs = var.preferred_cache_cluster_azs
@@ -87,6 +91,7 @@ resource "aws_elasticache_parameter_group" "redis" {
 }
 
 resource "aws_elasticache_subnet_group" "redis" {
+  count       = var.subnet_group_name == null && length(var.subnet_ids) > 0 ? 1 : 0
   name        = var.global_replication_group_id == null ? "${var.name_prefix}-redis-sg" : "${var.name_prefix}-redis-sg-replica"
   subnet_ids  = var.subnet_ids
   description = var.description

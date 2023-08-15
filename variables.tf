@@ -23,6 +23,13 @@ variable "node_type" {
 variable "subnet_ids" {
   type        = list(string)
   description = "List of VPC Subnet IDs for the cache subnet group."
+  default     = []
+}
+
+variable "subnet_group_name" {
+  type        = string
+  description = "The name of the subnet group. If it is not specified, the module will create one for you"
+  default     = null
 }
 
 variable "vpc_id" {
