@@ -33,12 +33,11 @@ module "redis" {
   num_cache_clusters = 2
   node_type          = "cache.t4g.small"
 
-  engine_version            = "6.x"
-  port                      = 6379
-  maintenance_window        = "mon:03:00-mon:04:00"
-  snapshot_window           = "04:00-06:00"
-  snapshot_retention_limit  = 7
-  final_snapshot_identifier = "redis-final-snapshot-name"
+  engine_version           = "7.0"
+  port                     = 6379
+  maintenance_window       = "mon:03:00-mon:04:00"
+  snapshot_window          = "04:00-06:00"
+  snapshot_retention_limit = 7
 
   automatic_failover_enabled = true
   multi_az_enabled           = true
@@ -48,7 +47,7 @@ module "redis" {
   auth_token                 = "1234567890asdfghjkl"
 
   apply_immediately = true
-  family            = "redis6.x"
+  family            = "redis7"
   description       = "Test elasticache redis."
 
   subnet_ids = data.aws_subnets.all.ids
@@ -75,6 +74,7 @@ module "redis" {
   ]
 
   tags = {
-    Project = "Test"
+    Project     = "Github"
+    Environment = "test"
   }
 }

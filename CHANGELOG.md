@@ -5,8 +5,38 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
-- Use t4g instance sizes for examples + Update minimum redis version from 5.x to 6.x
-- Update terraform versions
+- chore(snapshot): Allow restore from a snapshot ([#46](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/46))
+- feat(subnet_group): Allow to pass an existing subnet group ([#44](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/44))
+
+
+<a name="3.4.0"></a>
+## [3.4.0] - 2023-07-14
+
+- Remove provider max version constraints ([#47](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/47))
+
+
+<a name="3.3.0"></a>
+## [3.3.0] - 2023-04-20
+
+- Add User Group ID support ([#39](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/39))
+- fix: Type of multi_az_enabled variable ([#36](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/36))
+- Allow to skip sg egress rules creation ([#40](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/40))
+
+
+<a name="3.1.4"></a>
+## [3.1.4] - 2022-07-13
+
+
+
+<a name="3.2.0"></a>
+## [3.2.0] - 2022-07-13
+
+- Documentation + Examples cleanup ([#33](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/33))
+
+
+<a name="3.1.3"></a>
+## [3.1.3] - 2022-07-12
+
 - Add Data Tiering support ([#32](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/32))
 
 
@@ -125,7 +155,12 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.2...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.4.0...HEAD
+[3.4.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.3.0...3.4.0
+[3.3.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.4...3.3.0
+[3.1.4]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.2.0...3.1.4
+[3.2.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.3...3.2.0
+[3.1.3]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.2...3.1.3
 [3.1.2]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.1...3.1.2
 [3.1.1]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.0.0...3.1.0

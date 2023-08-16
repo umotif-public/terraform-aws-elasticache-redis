@@ -45,11 +45,16 @@ module "redis_main" {
 
   name_prefix        = "redis-example-main"
   num_cache_clusters = 2
-  node_type          = "cache.m5.large"
+  node_type          = "cache.m7g.large"
   auth_token         = "1234567890asdfghjkl"
 
   subnet_ids = data.aws_subnets.main.ids
   vpc_id     = data.aws_vpc.main.id
+
+  tags = {
+    Project     = "Github"
+    Environment = "test"
+  }
 }
 
 resource "aws_elasticache_global_replication_group" "this" {
@@ -62,7 +67,7 @@ module "redis_replica" {
 
   name_prefix        = "redis-example-replica"
   num_cache_clusters = 2
-  node_type          = "cache.m5.large"
+  node_type          = "cache.m7g.large"
   auth_token         = "1234567890asdfghjkl"
 
   subnet_ids = data.aws_subnets.replica.ids
@@ -71,4 +76,9 @@ module "redis_replica" {
   global_replication_group_id = aws_elasticache_global_replication_group.this.global_replication_group_id
 
   providers = { aws = aws.replica }
+
+  tags = {
+    Project     = "Github"
+    Environment = "test"
+  }
 }

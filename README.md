@@ -22,7 +22,7 @@ module "redis" {
   num_cache_clusters    = 2
   node_type             = "cache.t4g.small"
 
-  engine_version           = "6.x"
+  engine_version           = "7.0"
   port                     = 6379
   maintenance_window       = "mon:03:00-mon:04:00"
   snapshot_window          = "04:00-06:00"
@@ -35,7 +35,7 @@ module "redis" {
   auth_token                 = "1234567890asdfghjkl"
 
   apply_immediately = true
-  family            = "redis6.x"
+  family            = "redis7"
   description       = "Test elasticache redis."
 
   subnet_ids = module.vpc.private_subnets
@@ -81,14 +81,14 @@ Module managed by [uMotif](https://github.com/umotif-public/)
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.11 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.8.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.12.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.3.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.8.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.12.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.3.2 |
 
 ## Modules
@@ -139,6 +139,7 @@ No modules.
 | <a name="input_num_cache_clusters"></a> [num\_cache\_clusters](#input\_num\_cache\_clusters) | The number of cache clusters (primary and replicas) this replication group will have. If Multi-AZ is enabled, the value of this parameter must be at least 2. Updates will occur before other modifications. Conflicts with num\_node\_groups. | `number` | `1` | no |
 | <a name="input_num_node_groups"></a> [num\_node\_groups](#input\_num\_node\_groups) | Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications. | `number` | `0` | no |
 | <a name="input_parameter"></a> [parameter](#input\_parameter) | A list of Redis parameters to apply. Note that parameters may differ from one Redis family to another | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `[]` | no |
+| <a name="input_parameter_group_description"></a> [parameter\_group\_description](#input\_parameter\_group\_description) | The description of the ElastiCache parameter group | `string` | `null` | no |
 | <a name="input_port"></a> [port](#input\_port) | The port number on which each of the cache nodes will accept connections. | `number` | `6379` | no |
 | <a name="input_preferred_cache_cluster_azs"></a> [preferred\_cache\_cluster\_azs](#input\_preferred\_cache\_cluster\_azs) | A list of EC2 availability zones in which the replication group's cache clusters will be created. The order of the availability zones in the list is not important. | `list(string)` | `null` | no |
 | <a name="input_replicas_per_node_group"></a> [replicas\_per\_node\_group](#input\_replicas\_per\_node\_group) | Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will trigger an online resizing operation before other settings modifications. | `number` | `0` | no |

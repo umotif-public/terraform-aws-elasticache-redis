@@ -30,7 +30,7 @@ module "redis" {
   replicas_per_node_group = 1
   num_node_groups         = 2
 
-  engine_version           = "6.x"
+  engine_version           = "7.0"
   port                     = 6379
   maintenance_window       = "mon:03:00-mon:04:00"
   snapshot_window          = "04:00-06:00"
@@ -43,7 +43,7 @@ module "redis" {
   auth_token                 = "1234567890asdfghjkl"
 
   apply_immediately = true
-  family            = "redis6.x"
+  family            = "redis7"
   description       = "Test elasticache redis."
 
   subnet_ids = data.aws_subnets.all.ids
@@ -59,6 +59,7 @@ module "redis" {
   ]
 
   tags = {
-    Project = "Test"
+    Project     = "Github"
+    Environment = "test"
   }
 }
