@@ -130,6 +130,7 @@ resource "aws_security_group_rule" "redis_ingress_self" {
   protocol          = "tcp"
   self              = true
   security_group_id = aws_security_group.redis.id
+  description       = "Self Allow Redis ingress"
 }
 
 resource "aws_security_group_rule" "redis_ingress_cidr_blocks" {
@@ -141,6 +142,8 @@ resource "aws_security_group_rule" "redis_ingress_cidr_blocks" {
   protocol          = "tcp"
   cidr_blocks       = var.ingress_cidr_blocks
   security_group_id = aws_security_group.redis.id
+  description       = "CIDR allowed for Redis Ingress"
+
 }
 
 resource "aws_security_group_rule" "redis_egress" {
@@ -152,6 +155,7 @@ resource "aws_security_group_rule" "redis_egress" {
   protocol          = "-1"
   cidr_blocks       = var.egress_cidr_blocks
   security_group_id = aws_security_group.redis.id
+  description       = "CIDR allowed for Redis egress"
 }
 
 resource "aws_security_group_rule" "other_sg_ingress" {
@@ -162,4 +166,5 @@ resource "aws_security_group_rule" "other_sg_ingress" {
   protocol                 = "tcp"
   source_security_group_id = element(var.allowed_security_groups, count.index)
   security_group_id        = aws_security_group.redis.id
+  description              = "Additional SGs allowed for Redis ingress"
 }
