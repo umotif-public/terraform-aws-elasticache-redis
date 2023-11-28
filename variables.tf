@@ -150,6 +150,12 @@ variable "auth_token" {
   default     = ""
 }
 
+variable "auth_token_update_strategy" {
+  type        = string
+  description = "The strategy to use for applying updates to the auth_token. Valid values are `ROTATE`, `SET` and `DELETE`. Defaults to `ROTATE`. Can be specified only if `transit_encryption_enabled = true` and `auth_token` is not empty."
+  default     = null
+}
+
 variable "kms_key_id" {
   type        = string
   description = "The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if `at_rest_encryption_enabled = true`"

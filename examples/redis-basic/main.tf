@@ -44,7 +44,9 @@ module "redis" {
 
   at_rest_encryption_enabled = true
   transit_encryption_enabled = true
+
   auth_token                 = "1234567890asdfghjkl"
+  auth_token_update_strategy = "ROTATE"
 
   apply_immediately = true
   family            = "redis7"
