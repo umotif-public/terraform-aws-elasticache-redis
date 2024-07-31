@@ -87,6 +87,7 @@ resource "aws_elasticache_parameter_group" "redis" {
 
   # Ignore changes to the description since it will try to recreate the resource
   lifecycle {
+    create_before_destroy = true
     ignore_changes = [
       description,
     ]
