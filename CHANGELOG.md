@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+
+<a name="3.5.0"></a>
+## [3.5.0] - 2023-08-16
+
+- Create parameter group description variable ([#48](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/48))
 - chore(snapshot): Allow restore from a snapshot ([#46](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/46))
 - feat(subnet_group): Allow to pass an existing subnet group ([#44](https://github.com/umotif-public/terraform-aws-elasticache-redis/issues/44))
 
@@ -155,7 +161,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit of docs
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.4.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.5.0...HEAD
+[3.5.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.4.0...3.5.0
 [3.4.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.3.0...3.4.0
 [3.3.0]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.1.4...3.3.0
 [3.1.4]: https://github.com/umotif-public/terraform-aws-elasticache-redis/compare/3.2.0...3.1.4
